@@ -56,7 +56,6 @@ func WarekiToSeirekiAction(c *cli.Context) {
 		dateStr = c.Args().First()
 	}
 
-	fmt.Printf("kokomade")
 	wareki, err := wrk.ParseWarekiString(dateStr)
 	if err != nil {
 		fmt.Printf("[Error] %s\n", err)
