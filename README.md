@@ -4,7 +4,9 @@ wareki-cli は、Go言語で作られた和暦と西暦の変換ツールです�
 
 ## Installation
 
-
+```
+$ go get -u github.com/chase0213/wareki-cli
+```
 
 ## Usage
 

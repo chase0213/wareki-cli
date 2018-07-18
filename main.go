@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	wrk "github.com/chase0213/wareki"
+	wrk "github.com/chase0213/wareki/pkg/wareki"
 	"github.com/urfave/cli"
 )
 
@@ -59,15 +59,16 @@ func WarekiToSeirekiAction(c *cli.Context) {
 	wareki, err := wrk.ParseWarekiString(dateStr)
 	if err != nil {
 		fmt.Printf("[Error] %s\n", err)
+		return
 	}
 
-	fmt.Printf("toottayo")
 	seireki, err := wareki.Seireki()
 	if err != nil {
 		fmt.Printf("[Error] %s\n", err)
+		return
 	}
 
-	fmt.Printf("%d年%d月%d日\n", seireki.Year, seireki.Month, seireki.Day)
+	fmt.Printf("%d年%d月%d日\n", seireki.Year(), seireki.Month(), seireki.Day())
 }
 
 func SeirekiToWarekiAction(c *cli.Context) {
@@ -79,12 +80,14 @@ func SeirekiToWarekiAction(c *cli.Context) {
 	seireki, err := wrk.ParseSeirekiString(dateStr)
 	if err != nil {
 		fmt.Printf("[Error] %s\n", err)
+		return
 	}
 
 	wareki, err := seireki.Wareki()
 	if err != nil {
 		fmt.Printf("[Error] %s\n", err)
+		return
 	}
 
-	fmt.Printf("%s%d年%d月%d日\n", wareki.Name, wareki.Year, wareki.Month, wareki.Day)
+	fmt.Printf("%s%d年%d月%d日\n", wareki.Name(), wareki.Year(), wareki.Month(), wareki.Day())
 }
